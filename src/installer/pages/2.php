@@ -86,7 +86,7 @@ function checkRequirements() {
     // PHP version - 7.2.0 min, but older than 8.0
     // ts3phpframework needs to release a version with https://git.io/JKlRx for PHP 8 support
     {
-        $result = (PHP_VERSION_ID < 70200 || PHP_VERSION_ID > 80000) ? 2 : 0;
+        $result = (PHP_VERSION_ID < 70200 || PHP_VERSION_ID > 90000) ? 2 : 0;
 
         showCheckResult(
                 "PHP 7.2.0 - 7.4",
