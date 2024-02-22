@@ -1,0 +1,30 @@
+version: '3.1'
+
+services:
+    teamspeak:
+        image: teamspeak
+        environment:
+            TS3SERVER_LICENSE: accept
+        depends_on:
+            - db
+        ports:
+            - "9987:9987/udp"
+            - "10011:10011"
+            - "30033:30033"
+        restart: unless-stopped
+
+    db:
+        image: mysql:5.7
+        environment:
+            MYSQL_ROOT_PASSWORD: rootpassword
+            MYSQL_DATABASE: teamspeak
+            MYSQL_USER: tsuser
+            MYSQL_PASSWORD: tspassword
+        ports:
+            - "3306:3306"
+        volumes:
+            - mysql_data:/var/lib/mysql
+        restart: unless-stopped
+
+volumes:
+    mysql_data:
